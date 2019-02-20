@@ -17,16 +17,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         news_rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        val repo = ArticlesRepository()
         val adapter = NewsAdapter()
         news_rv.adapter = adapter
-        adapter.submitList(repo.listOfArticles)
         viewModel = ViewModelProviders.of(this).get(MainScreenViewModel::class.java)
-        viewModel.getArticlesList().observe(this, Observer {
+        viewModel.articlesList.observe(this, Observer {
             it?.let { list ->
                 adapter.submitList(list)
             }
         })
+        viewModel.getArticlesList()
 
     }
 }

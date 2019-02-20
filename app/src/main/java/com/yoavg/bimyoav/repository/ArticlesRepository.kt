@@ -1,6 +1,7 @@
 package com.yoavg.bimyoav.repository
 
 import com.yoavg.bimyoav.APICalls
+import com.yoavg.bimyoav.MainScreenViewModel
 import com.yoavg.bimyoav.RetrofitClient
 import com.yoavg.bimyoav.data.APIResponse
 import com.yoavg.bimyoav.data.Article
@@ -12,9 +13,9 @@ import timber.log.Timber
 class ArticlesRepository {
 
 
-    fun refreshData() : List<Article>? {
+    fun refreshData(listener : MainScreenViewModel.CallListener)  {
         val calls = RetrofitClient.newsRetrofit.create(APICalls::class.java)
-        calls.getNews("bcd1464b23904833abaef7ef08b5ca21", "abc-news").enqueue(object : Callback<APIResponse> {
+        calls.getNewsCall("bcd1464b23904833abaef7ef08b5ca21", "abc-news").enqueue(object : Callback<APIResponse> {
             override fun onFailure(call: Call<APIResponse>, t: Throwable) {
                 Timber.e("failure")
                 Timber.e(t)
@@ -23,11 +24,11 @@ class ArticlesRepository {
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
                 Timber.e("response")
                 response.body()?.let {
-                    return@let it
+                    //return@let it
+                    listener.getListData(it.articles)
                 }
             }
         })
-        return emptyList()
     }
 
 }
