@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion rootProject.compileSdk
     defaultConfig {
@@ -34,12 +36,14 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson"
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding"
-
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary"
+    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide"
 
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test:runner:$runner"

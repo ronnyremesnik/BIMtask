@@ -1,0 +1,22 @@
+package com.yoavg.bimyoav
+
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+
+object RetrofitClient {
+
+    private const val NEWS_URL = "https://newsapi.org/v2/"
+
+    private val httpClient: OkHttpClient = OkHttpClient.Builder()
+        .build()
+
+    val newsRetrofit: Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(httpClient)
+        .baseUrl(NEWS_URL)
+        .build()
+
+}
