@@ -11,14 +11,10 @@ import timber.log.Timber
 
 class ArticlesRepository {
 
-    var listOfArticles : List<Article>? = null
-    init {
-        refreshData()
-    }
 
-    fun refreshData(){
+    fun refreshData() : List<Article>? {
         val calls = RetrofitClient.newsRetrofit.create(APICalls::class.java)
-        calls.getNews("bcd1464b23904833abaef7ef08b5ca21","abc-news").enqueue(object : Callback<APIResponse> {
+        calls.getNews("bcd1464b23904833abaef7ef08b5ca21", "abc-news").enqueue(object : Callback<APIResponse> {
             override fun onFailure(call: Call<APIResponse>, t: Throwable) {
                 Timber.e("failure")
                 Timber.e(t)
@@ -27,12 +23,11 @@ class ArticlesRepository {
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
                 Timber.e("response")
                 response.body()?.let {
-                    for (article in it.articles){
-                        Timber.e(article.title)
-                    }
+                    return@let it
                 }
             }
         })
+        return emptyList()
     }
 
 }
