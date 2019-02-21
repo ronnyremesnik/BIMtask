@@ -41,7 +41,10 @@ class NewsAdapter :
             itemView.tv_title.text = article.title
             itemView.tv_description.text = article.description
             itemView.tv_timeline.text = article.timeLine
-            GlideApp.with(itemView.context).load(article.imgUrl).into(itemView.iv_article_img)
+            GlideApp.with(itemView.context).load(article.imgUrl)
+                .placeholder(R.drawable.file_download)
+                .error(R.drawable.borken_image)
+                .into(itemView.iv_article_img)
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ArticleActivity::class.java)
                 intent.putExtra("article", article)

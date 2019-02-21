@@ -49,6 +49,7 @@ ext {
     rxandroid = '2.0.2'
     retrofit = '2.5.0'
     glide = '4.8.0'
+    card_view = '1.0.0'
 
 
 }
