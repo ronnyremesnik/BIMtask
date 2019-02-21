@@ -1,4 +1,4 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.main_screen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yoavg.bimyoav.repository.ArticlesRepository
+import com.yoavg.bimyoav.NewsAdapter
+import com.yoavg.bimyoav.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -1,10 +1,9 @@
 package com.yoavg.bimyoav.repository
 
 import com.yoavg.bimyoav.APICalls
-import com.yoavg.bimyoav.MainScreenViewModel
+import com.yoavg.bimyoav.main_screen.MainScreenViewModel
 import com.yoavg.bimyoav.RetrofitClient
 import com.yoavg.bimyoav.data.APIResponse
-import com.yoavg.bimyoav.data.Article
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

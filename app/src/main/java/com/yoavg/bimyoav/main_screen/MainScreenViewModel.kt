@@ -1,6 +1,5 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.main_screen
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yoavg.bimyoav.data.Article
@@ -13,7 +12,7 @@ class MainScreenViewModel : ViewModel() {
     private val repo : ArticlesRepository = ArticlesRepository()
 
     fun getArticlesList(){
-        repo.refreshData(object : CallListener{
+        repo.refreshData(object : CallListener {
             override fun getListData(list: List<Article>) {
                 articlesList.postValue(list)
             }
