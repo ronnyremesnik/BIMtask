@@ -1,6 +1,7 @@
 package com.yoavg.bimyoav.app
 
 import android.app.Application
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
 
@@ -13,6 +14,8 @@ class BIMApplication : Application() {
             return
         }
         LeakCanary.install(this)
+
+       // ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
     }
 
 }

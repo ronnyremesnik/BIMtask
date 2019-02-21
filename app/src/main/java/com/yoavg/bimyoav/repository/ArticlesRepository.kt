@@ -16,9 +16,9 @@ import timber.log.Timber
 class ArticlesRepository {
 
 
-    fun refreshData() : Observable<APIResponse> {
+    fun refreshData(source : String) : Observable<APIResponse> {
         val calls = RetrofitClient.newsRetrofit.create(APICalls::class.java)
-        return calls.getNews("bcd1464b23904833abaef7ef08b5ca21", "abc-news")
+        return calls.getNews("bcd1464b23904833abaef7ef08b5ca21", source)
 //        compositeDisposable.add(calls.getNews("bcd1464b23904833abaef7ef08b5ca21", "abc-news")
 //            .subscribeOn(Schedulers.io())
 //            .map { t -> t.articles }

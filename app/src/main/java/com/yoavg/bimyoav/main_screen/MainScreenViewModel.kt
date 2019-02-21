@@ -1,7 +1,6 @@
 package com.yoavg.bimyoav.main_screen
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.yoavg.bimyoav.data.Article
 import com.yoavg.bimyoav.repository.ArticlesRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -9,14 +8,14 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class MainScreenViewModel : ViewModel() {
+class MainScreenViewModel : ViewModel(), LifecycleObserver {
 
     var articlesList = MutableLiveData<List<Article>>()
     private val disposables = CompositeDisposable()
     private val repo: ArticlesRepository = ArticlesRepository()
 
-    fun getArticlesList() {
-        disposables.add(repo.refreshData()
+    fun getArticlesList(source : String) {
+        disposables.add(repo.refreshData(source)
             .subscribeOn(Schedulers.io())
             .map { apiResponse -> apiResponse.articles }
             .observeOn(AndroidSchedulers.mainThread())
@@ -29,5 +28,16 @@ class MainScreenViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         disposables.clear()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun enterForeground(){
+        Timber.e("entering foreground")
+    }
+
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun enterBackground(){
+        Timber.e("entering background")
     }
 }
