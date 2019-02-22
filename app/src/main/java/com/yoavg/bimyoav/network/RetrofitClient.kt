@@ -1,4 +1,4 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

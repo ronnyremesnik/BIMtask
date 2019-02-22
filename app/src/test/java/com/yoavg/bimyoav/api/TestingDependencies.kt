@@ -1,4 +1,4 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.api
 
 import androidx.annotation.VisibleForTesting
 import okhttp3.HttpUrl
@@ -32,7 +32,7 @@ object TestingDependencies {
 
     fun getResponseFromJson(fileName: String): String {
         val inputStream = javaClass.classLoader
-            .getResourceAsStream("data/$fileName.json")
+            .getResourceAsStream("mock-data/$fileName.json")
         val source = Okio.buffer(Okio.source(inputStream))
         return source.readString(StandardCharsets.UTF_8)
     }

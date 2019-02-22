@@ -1,4 +1,4 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.network
 
 import com.yoavg.bimyoav.data.APIResponse
 import io.reactivex.Observable

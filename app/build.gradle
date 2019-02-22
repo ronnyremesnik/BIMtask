@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compileSdk
+    testOptions.unitTests.includeAndroidResources = true
     defaultConfig {
         applicationId "com.yoavg.bimyoav"
         minSdkVersion rootProject.minSdk
@@ -29,6 +30,11 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
     }
 }
 
@@ -59,8 +65,9 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide"
 
     testImplementation "junit:junit:$junit"
-    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_web_server"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp"
     testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin"
     androidTestImplementation "androidx.test:runner:$runner"
     androidTestImplementation "androidx.test:rules:$runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
@@ -68,6 +75,7 @@ dependencies {
     androidTestImplementation "androidx.test:core:$test_core"
     androidTestImplementation "androidx.arch.core:core-testing:$lifecycle_core_testing"
     androidTestImplementation "androidx.test.uiautomator:uiautomator:$automator_version"
-    androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin"
-
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$espresso"
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.1.1'
 }

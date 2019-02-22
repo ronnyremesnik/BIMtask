@@ -1,5 +1,6 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.api
 
+import com.yoavg.bimyoav.network.APICalls
 import com.yoavg.bimyoav.app.Constants
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -9,11 +10,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 import java.io.IOException
-import android.security.NetworkSecurityPolicy
-import org.robolectric.annotation.Implementation
-import org.robolectric.annotation.Implements
 
 
 /**
@@ -21,7 +18,6 @@ import org.robolectric.annotation.Implements
  */
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [23])
 class TestAPICalls {
 
     private lateinit var mockWebServer: MockWebServer
@@ -62,31 +58,4 @@ class TestAPICalls {
     fun tearDown() {
         mockWebServer.shutdown()
     }
-
-
-//    @Implements(NetworkSecurityPolicy::class)
-//    class MyNetworkSecurityPolicy {
-//
-//        val isCleartextTrafficPermitted: Boolean
-//            @Implementation
-//            get() = true
-//
-//        companion object {
-//
-//            val instance: NetworkSecurityPolicy
-//                @Implementation
-//                get() {
-//                    try {
-//
-//                        val shadow =
-//                            MyNetworkSecurityPolicy::class.java.forName("android.security.NetworkSecurityPolicy")
-//                        return shadow.newInstance()
-//                    } catch (e: Exception) {
-//                        throw AssertionError()
-//                    }
-//
-//                }
-//        }
-//    }
-
 }

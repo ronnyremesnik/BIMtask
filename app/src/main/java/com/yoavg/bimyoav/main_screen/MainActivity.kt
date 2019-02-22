@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yoavg.bimyoav.NewsAdapter
 import com.yoavg.bimyoav.R
+import com.yoavg.bimyoav.di.Injection
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import kotlin.random.Random
@@ -22,7 +23,13 @@ class MainActivity : AppCompatActivity() {
         news_rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         val adapter = NewsAdapter()
         news_rv.adapter = adapter
-        viewModel = ViewModelProviders.of(this).get(MainScreenViewModel::class.java)
+        viewModel = ViewModelProviders.of(
+            this, MainScreenViewModelFactory(
+                Injection.injectRepository(),
+                Injection.injectCompositeDisposable()
+            )
+        )
+            .get(MainScreenViewModel::class.java)
         viewModel.articlesList.observe(this, Observer {
             it?.let { list ->
                 adapter.submitList(list)
@@ -35,10 +42,10 @@ class MainActivity : AppCompatActivity() {
         val abc = "abc-news"
         val buzzfeed = "buzzfeed"
         if (Random.nextBoolean()) {
-            Timber.e("getting list from abc")
+            Timber.d("getting list from abc")
             viewModel.getArticlesList(abc)
         } else {
-            Timber.e("getting list from buzzfeed")
+            Timber.d("getting list from buzzfeed")
             viewModel.getArticlesList(buzzfeed)
         }
     }
