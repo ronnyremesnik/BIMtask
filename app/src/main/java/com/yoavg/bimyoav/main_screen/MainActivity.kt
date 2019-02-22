@@ -41,6 +41,5 @@ class MainActivity : AppCompatActivity() {
             Timber.e("getting list from buzzfeed")
             viewModel.getArticlesList(buzzfeed)
         }
-
     }
 }

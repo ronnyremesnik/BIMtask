@@ -14,7 +14,7 @@ class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article)
-        val article = intent?.extras?.getSerializable("article") as Article
+        val article = intent?.extras?.getParcelable("article") as Article
         webview_full_article.settings.javaScriptEnabled = true
         webview_full_article.loadUrl(article.url)
     }

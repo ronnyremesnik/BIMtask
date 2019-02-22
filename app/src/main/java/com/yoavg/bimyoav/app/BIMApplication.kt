@@ -15,7 +15,6 @@ class BIMApplication : Application() {
         }
         LeakCanary.install(this)
 
-       // ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
     }
 
 }

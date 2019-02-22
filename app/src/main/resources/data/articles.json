@@ -1,0 +1,136 @@
+{
+  "status": "ok",
+  "totalResults": 10,
+  "articles": [
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "David Rind, Kelly Terez, Justin Doom",
+      "title": "'Start Here': Smollett charged, ISIS bride can't return, Vatican sex-abuse conference begins",
+      "description": "It's Thursday, Feb. 21, 2019. Here's what you need to start your day.",
+      "url": "https://abcnews.go.com/US/start-here-smollett-charged-isis-bride-return-vatican-sex/story?id=61194814",
+      "urlToImage": "https://s.abcnews.com/images/US/jussie-smollett-file-ap-jc-190201_hpMain_5_16x9_992.jpg",
+      "publishedAt": "2019-02-21T10:01:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "Laura Spitalniak",
+      "title": "'Maybe he's overstayed his welcome': Trump confidant speculates on the future of top intel chief",
+      "description": "The CEO of Newsmax Media and a President Donald Trump insider, told the Powerhouse Politics podcast that Dan Coats might be dismissed since Trump was disappointed in him.",
+      "url": "https://abcnews.go.com/Politics/overstayed-trump-confidant-speculates-future-top-intel-chief/story?id=61187890",
+      "urlToImage": "https://s.abcnews.com/images/Politics/chris-ruddy-file-ap-jef-190220_hpMain_16x9_992.jpg",
+      "publishedAt": "2019-02-21T09:08:22Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "By NICOLE WINFIELD Associated Press",
+      "title": "Pope opens sex abuse summit amid outcry from survivors",
+      "description": "",
+      "url": "https://abcnews.go.com/International/wireStory/pope-opens-sex-abuse-summit-amid-outcry-survivors-61206153",
+      "urlToImage": "https://s.abcnews.com/images/International/WireAP_7c673a1737274d00be9213f102f890f6_16x9_992.jpg",
+      "publishedAt": "2019-02-21T08:50:33Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "The Associated Press",
+      "title": "N. Carolina transgender inmate denied move to women's prison",
+      "description": "",
+      "url": "https://abcnews.go.com/US/wireStory/carolina-transgender-inmate-denied-move-womens-prison-61205481",
+      "urlToImage": null,
+      "publishedAt": "2019-02-21T07:21:39Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "Mike Levine, Enjoli Francis",
+      "title": "US Coast Guard lieutenant accused of plotting 'to kill almost every last person on the earth'",
+      "description": "Coast Guard Lt. Christopher Paul Hasson was called a \"domestic terrorist\" and a \"white nationalist\" in court documents filed in Maryland.",
+      "url": "https://abcnews.go.com/US/us-coast-guard-lieutenant-accused-plotting-kill-person/story?id=61199690",
+      "urlToImage": "https://s.abcnews.com/images/US/weapons-cache-rt-jef-190220_hpMain_2_16x9_992.jpg",
+      "publishedAt": "2019-02-21T00:41:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "By KEVIN FREKING Associated Press",
+      "title": "Trump says trade deal will determine outcome on auto tariffs",
+      "description": "",
+      "url": "https://abcnews.go.com/Politics/wireStory/trump-trade-deal-determine-outcome-auto-tariffs-61195305",
+      "urlToImage": "https://s.abcnews.com/images/Politics/WireAP_671eb03e40bb4ef2a3c88c86a9090835_16x9_992.jpg",
+      "publishedAt": "2019-02-20T20:03:13Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "Lucien Bruggeman",
+      "title": "Michael Cohen granted 60-day extension to report to prison",
+      "description": "A federal judge on Wednesday granted Michael Cohen’s request to delay the start of his prison sentence.",
+      "url": "https://abcnews.go.com/Politics/michael-cohen-granted-60-day-extension-report-prison/story?id=61193044",
+      "urlToImage": "https://s.abcnews.com/images/Politics/michael-cohen-gty-jpo-181212_hpMain_3_16x9_992.jpg",
+      "publishedAt": "2019-02-20T19:19:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "Tommy Brooksbank",
+      "title": "Oscars 2019: Who makes up the Academy voting body and how the voting process works",
+      "description": "Hollywood’s emblematic institution has made a considerable effort to diversify its voting memThe winners all come down to the opinions of the nearly 8,000 voting members.",
+      "url": "https://abcnews.go.com/GMA/Culture/oscars-2019-makes-academy-voting-body-voting-process/story?id=60830793",
+      "urlToImage": "https://s.abcnews.com/images/GMA/star-is-born-mic-ht-ps-181206_hpMain_16x9_992.jpg",
+      "publishedAt": "2019-02-20T18:14:03Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "Devin Dwyer",
+      "title": "Supreme Court unanimously rules to limit states' ability to seize private property involved in a crime",
+      "description": "The Supreme Court moved to limit states’ ability to seize private property involved in a crime, saying the forfeitures are subject to protection against excessive fines.",
+      "url": "https://abcnews.go.com/Politics/supreme-court-rules-indiana-seizure-convicts-land-rover/story?id=61187893",
+      "urlToImage": "https://s.abcnews.com/images/Politics/supreme-court-building-gty-ps-180709_hpMain_16x9_992.jpg",
+      "publishedAt": "2019-02-20T17:14:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "Bill Hutchinson",
+      "title": "W. Virginia educators strike for second day to make sure loathed education bill is a 'dead deal'",
+      "description": "Striking teachers oppose a proposed education bill they say is retaliatory.",
+      "url": "https://abcnews.go.com/US/west-virginia-educators-sparked-national-wave-teachers-strikes/story?id=61162049",
+      "urlToImage": "https://s.abcnews.com/images/US/strike-ap-er-190219_hpMain_16x9_992.jpg",
+      "publishedAt": "2019-02-20T15:30:00Z",
+      "content": null
+    }
+  ]
+}
