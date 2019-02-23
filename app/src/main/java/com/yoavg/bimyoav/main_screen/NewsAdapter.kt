@@ -65,6 +65,5 @@ class NewsAdapter :
                 itemView.context.startActivity(intent)
             }
         }
-
     }
 }

@@ -36,6 +36,4 @@ class TestViewMainActivityViewModel {
         viewModel.getArticlesList()
         verify(repo).getData()
     }
-
-
 }
