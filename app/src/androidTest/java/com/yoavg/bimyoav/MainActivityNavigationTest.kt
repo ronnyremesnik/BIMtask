@@ -39,7 +39,7 @@ class MainActivityNavigationTest {
     @Before
     fun init() {
         // get the idling resource from viewmodel so test can wait for async calls
-        testIdlingResource = activityTestRule.activity.viewModel.idlingResource
+        testIdlingResource = activityTestRule.activity.idlingResource
         IdlingRegistry.getInstance().register(testIdlingResource)
     }
 
@@ -51,7 +51,6 @@ class MainActivityNavigationTest {
 
     @Test
     fun test_clickItemInList() {
-
         // check there are items and able to click one
         onView(ViewMatchers.withId(R.id.news_rv))
             .perform(
@@ -62,7 +61,6 @@ class MainActivityNavigationTest {
 
     @Test
     fun test_checkItemsAfterRotation() {
-
         // Check there are 10 items in recyclerview
         assertRecyclerViewItemCount(R.id.news_rv, numberOfItems)
 

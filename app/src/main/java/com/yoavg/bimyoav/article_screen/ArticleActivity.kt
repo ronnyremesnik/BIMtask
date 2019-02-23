@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.yoavg.bimyoav.R
+import com.yoavg.bimyoav.app.Constants
 import com.yoavg.bimyoav.data.Article
 
 class ArticleActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article)
-        val article = intent?.extras?.getParcelable("article") as Article
+        val article = intent?.extras?.getParcelable(Constants.ARTICLE) as Article
         webView = findViewById(R.id.webview_full_article)
         progressBar = findViewById(R.id.web_progress_bar)
         rootView = findViewById(R.id.article_layout)

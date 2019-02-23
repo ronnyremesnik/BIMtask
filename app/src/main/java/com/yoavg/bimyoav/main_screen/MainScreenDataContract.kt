@@ -21,13 +21,13 @@ interface MainScreenDataContract {
         fun saveData(data: List<Article>)
         fun handleError(error: Throwable)
         fun onClear()
+    }
 
-
-       // fun getData(source: String): Single<APIResponse>
+    interface View {
+        val idlingResource: IdlingResource
     }
 
     interface ViewModel {
-        val idlingResource: IdlingResource
         fun getArticlesList()
     }
 

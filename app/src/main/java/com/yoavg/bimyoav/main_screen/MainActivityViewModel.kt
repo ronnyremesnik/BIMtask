@@ -9,18 +9,14 @@ import com.yoavg.bimyoav.util.publishSubjectToLiveData
 import io.reactivex.disposables.CompositeDisposable
 
 class MainActivityViewModel(
-    private val repository: MainScreenDataContract.Repository,
+    val repository: MainScreenDataContract.Repository,
     private val disposables: CompositeDisposable
 ) : ViewModel(), MainScreenDataContract.ViewModel {
-
-    //var articlesList = MutableLiveData<List<Article>>()
 
     val articlesList : LiveData<List<Article>> by lazy {
         repository.incomingData.publishSubjectToLiveData(disposables)
     }
 
-    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-    override val idlingResource = CountingIdlingResource("counting")
 
 
     fun refreshData(){

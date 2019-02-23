@@ -51,10 +51,4 @@ class ArticlesRepository(
     }
 
 
-//    override fun getData(source: String): Single<APIResponse> {
-//
-//        return calls.getNews(Constants.NEWS_API_KEY, source)
-//    }
-
-
 }

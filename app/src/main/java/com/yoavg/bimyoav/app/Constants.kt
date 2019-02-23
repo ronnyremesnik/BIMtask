@@ -11,5 +11,7 @@ object Constants {
     const val BUZZFEED_SOURCE = "buzzfeed"
     const val TABLE_NAME = "articles"
     const val DB_NAME = "myRoomDB"
+    const val ARTICLE = "article"
+    const val DATA_PRESENTED_LIMIT = 10
 
 }
