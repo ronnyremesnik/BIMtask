@@ -1,5 +1,7 @@
 package com.yoavg.bimyoav
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -48,7 +50,9 @@ class NewsAdapter :
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ArticleActivity::class.java)
                 intent.putExtra("article", article)
-                itemView.context.startActivity(intent)
+                val bundle = ActivityOptions.makeSceneTransitionAnimation(itemView.context as Activity)
+                    .toBundle()
+                itemView.context.startActivity(intent, bundle)
             }
         }
 

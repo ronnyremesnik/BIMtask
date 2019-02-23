@@ -59,6 +59,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding"
     implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espresso"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary"
     implementation "com.github.bumptech.glide:glide:$glide"
@@ -77,5 +78,9 @@ dependencies {
     androidTestImplementation "androidx.test.uiautomator:uiautomator:$automator_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
     androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$espresso"
-    implementation 'androidx.test.espresso:espresso-idling-resource:3.1.1'
+    androidTestImplementation("com.schibsted.spain:barista:$barista") {
+        exclude group: 'com.android.support'
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'com.android.support.test.uiautomator', module: 'uiautomator-v18'
+    }
 }

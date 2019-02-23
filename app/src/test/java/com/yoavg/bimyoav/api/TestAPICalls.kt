@@ -1,7 +1,7 @@
 package com.yoavg.bimyoav.api
 
-import com.yoavg.bimyoav.network.APICalls
 import com.yoavg.bimyoav.app.Constants
+import com.yoavg.bimyoav.network.APICalls
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -19,6 +19,8 @@ import java.io.IOException
 
 @RunWith(RobolectricTestRunner::class)
 class TestAPICalls {
+
+
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var calls: APICalls
@@ -43,7 +45,7 @@ class TestAPICalls {
             .run {
                 assertNoErrors()
                 assertValueCount(1)
-                Assert.assertEquals(values()[0].articles.size, 10)
+                Assert.assertEquals(values()[0].articles.size, TestingDependencies.NUMBER_OF_ITEMS)
                 //   Assert.assertEquals(values()[0][0].userName, "Leanne Graham")
                 //     Assert.assertEquals(values()[0][0].id, 1)
             }

@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
 object TestingDependencies {
 
+    const val NUMBER_OF_ITEMS = 10
+
     fun getRetrofit(baseUrl: HttpUrl): Retrofit {
         return Retrofit.Builder().baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())

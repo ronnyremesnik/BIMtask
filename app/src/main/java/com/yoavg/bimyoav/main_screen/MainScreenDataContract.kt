@@ -1,5 +1,6 @@
 package com.yoavg.bimyoav.main_screen
 
+import androidx.test.espresso.IdlingResource
 import com.yoavg.bimyoav.data.APIResponse
 import io.reactivex.Single
 
@@ -11,5 +12,12 @@ interface MainScreenDataContract {
     interface Repository {
 
         fun getData(source: String): Single<APIResponse>
+    }
+
+    interface ViewModel {
+
+        val idlingResource : IdlingResource
+        fun getArticlesList(source: String)
+
     }
 }

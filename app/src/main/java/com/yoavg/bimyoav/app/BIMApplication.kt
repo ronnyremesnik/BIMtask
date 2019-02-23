@@ -13,7 +13,7 @@ class BIMApplication : Application() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return
         }
-        LeakCanary.install(this)
+       // LeakCanary.install(this)
 
     }
 

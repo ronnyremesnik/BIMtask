@@ -12,6 +12,6 @@ class MainScreenViewModelFactory(private val repository: MainScreenDataContract.
                                  private val disposables : CompositeDisposable) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return MainScreenViewModel(repository, disposables) as T
+        return MainActivityViewModel(repository, disposables) as T
     }
 }

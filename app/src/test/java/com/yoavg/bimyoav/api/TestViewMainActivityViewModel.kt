@@ -5,9 +5,8 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.yoavg.bimyoav.app.Constants
 import com.yoavg.bimyoav.data.Article
+import com.yoavg.bimyoav.main_screen.MainActivityViewModel
 import com.yoavg.bimyoav.main_screen.MainScreenDataContract
-import com.yoavg.bimyoav.main_screen.MainScreenViewModel
-import com.yoavg.bimyoav.repository.ArticlesRepository
 import io.reactivex.disposables.CompositeDisposable
 import org.junit.Before
 import org.junit.Test
@@ -21,14 +20,14 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 class TestViewMainActivityViewModel {
 
-    private lateinit var viewModel: MainScreenViewModel
+    private lateinit var viewModel: MainActivityViewModel
     private var repo : MainScreenDataContract.Repository = mock()
     private var dataChannel : Observer<List<Article>> = mock()
     private val dataSource = Constants.BUZZFEED_SOURCE
 
     @Before
     fun init() {
-        viewModel = MainScreenViewModel(repo, CompositeDisposable())
+        viewModel = MainActivityViewModel(repo, CompositeDisposable())
         viewModel.articlesList.observeForever(dataChannel)
     }
 
