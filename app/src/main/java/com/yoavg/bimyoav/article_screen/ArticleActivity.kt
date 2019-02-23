@@ -25,6 +25,7 @@ class ArticleActivity : AppCompatActivity() {
         webView = findViewById(R.id.webview_full_article)
         progressBar = findViewById(R.id.web_progress_bar)
         rootView = findViewById(R.id.article_layout)
+
         // some abc-news articles need JS so they can load properly
         webView.settings.javaScriptEnabled = true
         webView.webViewClient = object : WebViewClient() {

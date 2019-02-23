@@ -28,6 +28,7 @@ object TestingDependencies {
             .build()
     }
 
+    // reading our mock json for the test
     fun getResponseFromJson(fileName: String): String {
         val inputStream = javaClass.classLoader
             .getResourceAsStream("mock-data/$fileName.json")

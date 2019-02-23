@@ -11,5 +11,4 @@ interface APICalls {
     @GET("top-headlines")
     fun getNews(@Query("apiKey") apiKey: String,
                 @Query("sources") sources : String) : Single<APIResponse>
-
 }

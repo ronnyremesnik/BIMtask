@@ -29,6 +29,7 @@ class MainActivityViewModel(
 
     override fun onCleared() {
         super.onCleared()
+
         //clear the disposable when the viewmodel is cleared
         disposable.clear()
         repository.disposable.clear()

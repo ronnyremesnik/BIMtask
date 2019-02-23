@@ -19,5 +19,4 @@ object RetrofitClient {
         .client(httpClient)
         .baseUrl(NEWS_URL)
         .build()
-
 }

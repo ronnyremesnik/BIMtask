@@ -34,6 +34,5 @@ class TimeConverters {
             Timber.e(e)
         }
         return resolvedDate ?: ""
-
     }
 }
