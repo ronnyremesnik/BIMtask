@@ -13,14 +13,8 @@ import org.robolectric.RobolectricTestRunner
 import java.io.IOException
 
 
-/**
- * Created by Yoav G on 22/02/2019.
- */
-
 @RunWith(RobolectricTestRunner::class)
 class TestAPICalls {
-
-
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var calls: APICalls
@@ -31,7 +25,6 @@ class TestAPICalls {
         calls = TestingDependencies.getRetrofit(mockWebServer.url("/"))
             .create(APICalls::class.java)
     }
-
 
     @Test
     fun getArticles() {
@@ -46,8 +39,6 @@ class TestAPICalls {
                 assertNoErrors()
                 assertValueCount(1)
                 Assert.assertEquals(values()[0].articles.size, TestingDependencies.NUMBER_OF_ITEMS)
-                //   Assert.assertEquals(values()[0][0].userName, "Leanne Graham")
-                //     Assert.assertEquals(values()[0][0].id, 1)
             }
     }
 

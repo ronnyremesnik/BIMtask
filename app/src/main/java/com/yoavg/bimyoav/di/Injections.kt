@@ -10,9 +10,7 @@ import com.yoavg.bimyoav.repository.LocalDataSource
 import com.yoavg.bimyoav.repository.RemoteDataSource
 import io.reactivex.disposables.CompositeDisposable
 
-/**
- * Created by Yoav G on 22/02/2019.
- */
+
 class Injections {
 
     companion object {
@@ -24,10 +22,6 @@ class Injections {
         private fun injectAPICalls(): APICalls {
             return RetrofitClient.newsRetrofit.create(APICalls::class.java)
         }
-
-//        fun injectRepository(): ArticlesRepository {
-//            return ArticlesRepository(injectAPICalls())
-//        }
 
         private fun injectDatabase() : MyRoomDB {
             return MyRoomDB.getInstance(BIMApplication.applicationContext())

@@ -18,11 +18,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
-/**
- * Created by Yoav G on 22/02/2019.
- */
-class MainActivityNavigationTest {
+class TestMainActivityNavigation {
 
     private val numberOfItems = 10
 

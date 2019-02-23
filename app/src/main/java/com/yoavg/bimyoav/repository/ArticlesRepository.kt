@@ -5,6 +5,7 @@ import com.yoavg.bimyoav.main_screen.MainScreenDataContract
 import com.yoavg.bimyoav.util.doWorkOnBackgroundResultsOnMain
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
+import timber.log.Timber
 
 class ArticlesRepository(
     private val localDataSource: MainScreenDataContract.LocalDataSource,
@@ -15,6 +16,7 @@ class ArticlesRepository(
 
     override val disposable: CompositeDisposable = CompositeDisposable()
 
+    // get data from local db
     override fun getData() {
         disposable.add(
             localDataSource.getArticles()
@@ -30,6 +32,7 @@ class ArticlesRepository(
         )
     }
 
+    // get data from remote - api
     override fun refreshData() {
         disposable.add(
             remoteDataSource.getArticles()
@@ -39,11 +42,13 @@ class ArticlesRepository(
         )
     }
 
+    // save data to db
     override fun saveData(data: List<Article>) {
         localDataSource.saveArticles(data)
     }
 
     override fun handleError(error: Throwable) {
+        Timber.e(error)
     }
 
     override fun onClear() {

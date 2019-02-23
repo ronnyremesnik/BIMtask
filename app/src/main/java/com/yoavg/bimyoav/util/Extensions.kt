@@ -10,9 +10,8 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 /**
- * Created by Yoav G on 23/02/2019.
+ * Extension functions for Rx usage
  */
-
 fun <T> Flowable<T>.doWorkOnBackgroundResultsOnMain(): Flowable<T> {
     return this.subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())

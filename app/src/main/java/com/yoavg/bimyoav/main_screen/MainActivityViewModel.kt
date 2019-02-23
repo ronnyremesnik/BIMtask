@@ -1,56 +1,36 @@
 package com.yoavg.bimyoav.main_screen
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.test.espresso.idling.CountingIdlingResource
 import com.yoavg.bimyoav.data.Article
 import com.yoavg.bimyoav.util.publishSubjectToLiveData
 import io.reactivex.disposables.CompositeDisposable
 
 class MainActivityViewModel(
-    val repository: MainScreenDataContract.Repository,
-    private val disposables: CompositeDisposable
+    private val repository: MainScreenDataContract.Repository,
+    private val disposable: CompositeDisposable
 ) : ViewModel(), MainScreenDataContract.ViewModel {
 
-    val articlesList : LiveData<List<Article>> by lazy {
-        repository.incomingData.publishSubjectToLiveData(disposables)
+    val articlesList: LiveData<List<Article>> by lazy {
+        repository.incomingData.publishSubjectToLiveData(disposable)
     }
 
-
-
-    fun refreshData(){
+    private fun refreshData() {
         repository.refreshData()
     }
 
-
     override fun getArticlesList() {
-
-        if(articlesList.value == null) {
+        if (articlesList.value == null) {
             repository.getData()
+        } else {
+            refreshData()
         }
-
-
-//        // for testing, increment before a blocking operation and decrement after
-//        idlingResource.increment()
-//        disposables.add(repository.getData(source)
-//            .subscribeOn(Schedulers.io())
-//            .map { apiResponse -> apiResponse.articles }
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({ data ->
-//                idlingResource.decrement()
-//              //  articlesList.postValue(data)
-//            }, { error ->
-//                // don't forget to decrement on all use cases
-//                idlingResource.decrement()
-//                Timber.e(error)
-//            })
-//        )
     }
 
     override fun onCleared() {
         super.onCleared()
-        //clear the disposables when the viewmodel is cleared
-        disposables.clear()
+        //clear the disposable when the viewmodel is cleared
+        disposable.clear()
+        repository.disposable.clear()
     }
 }

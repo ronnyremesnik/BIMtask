@@ -8,9 +8,6 @@ import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
 
-/**
- * Created by Yoav G on 22/02/2019.
- */
 interface MainScreenDataContract {
 
     interface Repository {

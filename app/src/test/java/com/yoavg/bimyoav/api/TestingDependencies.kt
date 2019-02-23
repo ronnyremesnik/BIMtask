@@ -10,10 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.TimeUnit
 
-/**
- * Created by Yoav G on 22/02/2019.
- */
-
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
 object TestingDependencies {
 

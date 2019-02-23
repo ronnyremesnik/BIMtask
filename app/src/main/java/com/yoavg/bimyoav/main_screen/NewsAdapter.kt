@@ -1,12 +1,9 @@
 package com.yoavg.bimyoav.main_screen
 
-import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,8 +12,10 @@ import com.yoavg.bimyoav.app.GlideApp
 import com.yoavg.bimyoav.article_screen.ArticleActivity
 import com.yoavg.bimyoav.data.Article
 import kotlinx.android.synthetic.main.article_cell.view.*
-
-
+import timber.log.Timber
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class NewsAdapter :
@@ -45,7 +44,17 @@ class NewsAdapter :
         fun bind(article: Article) {
             itemView.tv_title.text = article.title
             itemView.tv_description.text = article.description
-            itemView.tv_timeline.text = article.timeLine
+            val originalTimeFormat = SimpleDateFormat(Constants.ORIGINAL_DATE_FORMAT, Locale.US)
+            originalTimeFormat.timeZone = TimeZone.getTimeZone("UTC")
+            val outputFormat = SimpleDateFormat(Constants.DESIRED_DATE_FORMAT, Locale.US)
+            var resolvedDate: String? = null
+            try {
+                val date = originalTimeFormat.parse(article.timeLine)
+                resolvedDate = outputFormat.format(date)
+            } catch (e: ParseException) {
+                Timber.e(e)
+            }
+            itemView.tv_timeline.text = resolvedDate ?: article.timeLine
             GlideApp.with(itemView.context).load(article.imgUrl)
                 .placeholder(com.yoavg.bimyoav.R.drawable.file_download)
                 .error(com.yoavg.bimyoav.R.drawable.borken_image)
@@ -53,14 +62,7 @@ class NewsAdapter :
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ArticleActivity::class.java)
                 intent.putExtra(Constants.ARTICLE, article)
-
-
-                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity).toBundle()
-                itemView.context.startActivity(intent, bundle)
-
-
-                // normal
-                //itemView.context.startActivity(intent)
+                itemView.context.startActivity(intent)
             }
         }
 

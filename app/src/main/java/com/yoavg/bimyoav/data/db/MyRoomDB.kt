@@ -4,14 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.yoavg.bimyoav.app.Constants
 import com.yoavg.bimyoav.data.Article
 
-/**
- * Created by Yoav G on 23/02/2019.
- */
-
 @Database(entities = [Article::class], exportSchema = false, version = 1)
+@TypeConverters(TimeConverters::class)
 abstract class MyRoomDB : RoomDatabase() {
 
     abstract fun getArticleDao(): ArticlesDao

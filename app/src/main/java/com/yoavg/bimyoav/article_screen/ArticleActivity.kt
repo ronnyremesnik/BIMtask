@@ -21,7 +21,7 @@ class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article)
-        val article = intent?.extras?.getParcelable(Constants.ARTICLE) as Article
+        val article = intent?.extras?.getParcelable(Constants.ARTICLE) as Article?
         webView = findViewById(R.id.webview_full_article)
         progressBar = findViewById(R.id.web_progress_bar)
         rootView = findViewById(R.id.article_layout)
@@ -36,6 +36,6 @@ class ArticleActivity : AppCompatActivity() {
                 // brought back the progressbar
             }
         }
-        webView.loadUrl(article.url)
+        webView.loadUrl(article?.url)
     }
 }

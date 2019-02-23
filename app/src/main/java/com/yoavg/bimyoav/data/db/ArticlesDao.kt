@@ -5,14 +5,10 @@ import com.yoavg.bimyoav.app.Constants
 import com.yoavg.bimyoav.data.Article
 import io.reactivex.Flowable
 
-/**
- * Created by Yoav G on 23/02/2019.
- */
-
 @Dao
 abstract class ArticlesDao {
 
-    @Query("SELECT * FROM articles ORDER BY title DESC LIMIT :limit")
+    @Query("SELECT * FROM articles ORDER BY timeLine DESC LIMIT :limit")
     protected abstract fun getAllArticles(limit: Int): Flowable<List<Article>>
 
     // this is to avoid false negatives on db updates

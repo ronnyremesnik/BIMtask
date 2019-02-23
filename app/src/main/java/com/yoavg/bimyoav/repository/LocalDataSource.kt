@@ -7,9 +7,6 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 
-/**
- * Created by Yoav G on 23/02/2019.
- */
 class LocalDataSource(private val roomDB: MyRoomDB) : MainScreenDataContract.LocalDataSource {
 
     override fun getArticles(): Flowable<List<Article>> {
