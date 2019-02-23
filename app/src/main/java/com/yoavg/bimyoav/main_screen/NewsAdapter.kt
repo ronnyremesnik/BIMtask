@@ -1,4 +1,4 @@
-package com.yoavg.bimyoav
+package com.yoavg.bimyoav.main_screen
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.yoavg.bimyoav.R
 import com.yoavg.bimyoav.app.GlideApp
 import com.yoavg.bimyoav.article_screen.ArticleActivity
 import com.yoavg.bimyoav.data.Article
@@ -25,7 +26,6 @@ class NewsAdapter :
             return oldItem == newItem
         }
     }) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder(

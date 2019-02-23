@@ -1,17 +1,12 @@
 package com.yoavg.bimyoav.article_screen
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.Group
-import androidx.core.widget.ContentLoadingProgressBar
 import com.yoavg.bimyoav.R
 import com.yoavg.bimyoav.data.Article
 

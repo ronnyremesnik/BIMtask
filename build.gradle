@@ -52,6 +52,7 @@ ext {
     okhttp = '3.13.1'
     mockito_kotlin = '2.1.0'
     barista = '2.7.1'
+    room = '2.1.0-alpha04'
 }
 
 task clean(type: Delete) {

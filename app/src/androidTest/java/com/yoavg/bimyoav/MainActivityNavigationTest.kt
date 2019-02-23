@@ -12,6 +12,7 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
 import com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount
 import com.yoavg.bimyoav.main_screen.MainActivity
+import com.yoavg.bimyoav.main_screen.NewsAdapter
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
