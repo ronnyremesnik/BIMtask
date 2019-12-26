@@ -10,7 +10,7 @@ android {
     compileSdkVersion rootProject.compileSdk
     testOptions.unitTests.includeAndroidResources = true
     defaultConfig {
-        applicationId "com.yoavg.bimyoav"
+        applicationId "com.autodesk.articles"
         minSdkVersion rootProject.minSdk
         targetSdkVersion rootProject.targetSdk
         versionCode rootProject.versionCode
