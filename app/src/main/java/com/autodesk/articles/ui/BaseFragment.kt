@@ -14,13 +14,10 @@ import com.autodesk.articles.R
 import com.autodesk.articles.data.Displayable
 import kotlinx.android.synthetic.main.fragment_main.*
 
-abstract class BaseFragment<Entity : Displayable> : Fragment(), BaseDataContract.View {
+abstract class BaseFragment<Entity : Displayable> : Fragment() {
 
-//    private lateinit var recyclerView: RecyclerView
-//    private lateinit var progressBar: ProgressBar
-//    protected lateinit var adapter : ArticleAdapter
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-    override val idlingResource = CountingIdlingResource("counting")
+    val idlingResource = CountingIdlingResource("counting")
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,29 +28,10 @@ abstract class BaseFragment<Entity : Displayable> : Fragment(), BaseDataContract
 
     abstract fun getAdapter() : BaseItemAdapter<Entity>
 
-    abstract fun setEntities(list: List<Entity>)
-
     open fun initViews() {
         main_rv.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//        adapter = ArticleAdapter()
         main_rv.adapter = getAdapter()
-
-//        viewModel = getEntityViewModel()
-
         idlingResource.increment()
-//        viewModel.getEntitiesObserver().observe(this, Observer {
-//            it?.let { list ->
-//                //                adapter.submitList(list)
-//                setEntities(list)
-//                if (list.isNotEmpty()) {
-//                    if (!idlingResource.isIdleNow) {
-//                        idlingResource.decrement()
-//                    }
-//                    progress_main.visibility = View.GONE
-//                }
-//            }
-//        })
-
     }
 
     override fun onCreateView(

@@ -3,7 +3,7 @@ package com.autodesk.articles.ui.article
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.autodesk.articles.data.Article
-import com.autodesk.articles.repository.ArticlesRepository
+import com.autodesk.articles.repository.article.ArticlesRepository
 import com.autodesk.articles.util.publishSubjectToLiveData
 import io.reactivex.disposables.CompositeDisposable
 

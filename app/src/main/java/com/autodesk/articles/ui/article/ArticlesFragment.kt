@@ -8,10 +8,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.autodesk.articles.app.Constants
 import com.autodesk.articles.article_screen.ArticleActivity
 import com.autodesk.articles.data.Article
-import com.autodesk.articles.data.ArticlesResponse
 import com.autodesk.articles.di.Injections
 import com.autodesk.articles.ui.BaseFragment
-import com.autodesk.articles.ui.BaseViewModel
 import com.autodesk.articles.ui.BaseItemAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 import timber.log.Timber
@@ -29,7 +27,7 @@ class ArticlesFragment : BaseFragment<Article>(), ArticleListener {
         }
     }
 
-    lateinit var viewModel : ArticlesViewModel
+    private lateinit var viewModel : ArticlesViewModel
 
     private var adapter: ArticleAdapter =
         ArticleAdapter(this)
@@ -47,8 +45,7 @@ class ArticlesFragment : BaseFragment<Article>(), ArticleListener {
 
         viewModel.articlesList.observe(this, Observer {
             it?.let { list ->
-                //                adapter.submitList(list)
-                setEntities(list)
+                adapter.submitList(list)
                 if (list.isNotEmpty()) {
                     if (!idlingResource.isIdleNow) {
                         idlingResource.decrement()
@@ -61,11 +58,6 @@ class ArticlesFragment : BaseFragment<Article>(), ArticleListener {
 
     override fun getAdapter(): BaseItemAdapter<Article> {
         return adapter
-    }
-
-
-    override fun setEntities(list: List<Article>) {
-        adapter.submitList(list)
     }
 
     override fun onResume() {

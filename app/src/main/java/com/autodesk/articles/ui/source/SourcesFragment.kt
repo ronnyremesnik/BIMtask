@@ -5,15 +5,11 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.autodesk.articles.app.Constants
-import com.autodesk.articles.article_screen.ArticleActivity
 import com.autodesk.articles.data.Source
-import com.autodesk.articles.data.SourceResponse
 import com.autodesk.articles.di.Injections
 import com.autodesk.articles.main_screen.ArticlesActivity
 import com.autodesk.articles.ui.BaseFragment
-import com.autodesk.articles.ui.BaseViewModel
 import com.autodesk.articles.ui.BaseItemAdapter
-import com.autodesk.articles.ui.article.ArticlesViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class SourcesFragment : BaseFragment<Source>(), SourceListener {
@@ -24,18 +20,13 @@ class SourcesFragment : BaseFragment<Source>(), SourceListener {
         }
     }
 
-    lateinit var viewModel : SourceViewModel
+    private lateinit var viewModel : SourceViewModel
 
     private var adapter: SourceAdapter =
         SourceAdapter(this)
 
     override fun getAdapter(): BaseItemAdapter<Source> {
         return adapter
-    }
-
-
-    override fun setEntities(list: List<Source>) {
-        adapter.submitList(list)
     }
 
     override fun initViews() {
@@ -51,8 +42,7 @@ class SourcesFragment : BaseFragment<Source>(), SourceListener {
 
         viewModel.sourceList.observe(this, Observer {
             it?.let { list ->
-                //                adapter.submitList(list)
-                setEntities(list)
+                adapter.submitList(list)
                 if (list.isNotEmpty()) {
                     if (!idlingResource.isIdleNow) {
                         idlingResource.decrement()

@@ -1,4 +1,4 @@
-package com.autodesk.articles.repository
+package com.autodesk.articles.repository.article
 
 import com.autodesk.articles.data.Article
 import com.autodesk.articles.util.doWorkOnBackgroundResultsOnMain
@@ -8,8 +8,8 @@ import timber.log.Timber
 
 
 class ArticlesRepository(
-    private val localDataSource: ArticleLocalDataSourceImpl,
-    private val remoteDataSource: ArticleRemoteDataSourceImpl
+    private val localDataSource: ArticleLocalDataSource,
+    private val remoteDataSource: ArticleRemoteDataSource
 ) {
 
     val incomingData: PublishSubject<List<Article>> = PublishSubject.create<List<Article>>()

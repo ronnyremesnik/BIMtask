@@ -2,8 +2,7 @@ package com.autodesk.articles.ui.source
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.autodesk.articles.repository.ArticlesRepository
-import com.autodesk.articles.repository.SourcesRepository
+import com.autodesk.articles.repository.source.SourcesRepository
 import io.reactivex.disposables.CompositeDisposable
 
 @Suppress("UNCHECKED_CAST")

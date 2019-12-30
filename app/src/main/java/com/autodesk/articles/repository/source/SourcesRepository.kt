@@ -1,10 +1,6 @@
-package com.autodesk.articles.repository
+package com.autodesk.articles.repository.source
 
 import com.autodesk.articles.data.Source
-import com.autodesk.articles.data.SourceResponse
-import com.autodesk.articles.ui.BaseRepository
-import io.reactivex.Flowable
-import io.reactivex.Single
 import com.autodesk.articles.util.doWorkOnBackgroundResultsOnMain
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
@@ -14,7 +10,7 @@ import timber.log.Timber
 
 class SourcesRepository(
     private val localDataSource: SourceLocalDataSourceImpl,
-    private val remoteDataSource: SourceRemoteDataSourceImpl
+    private val remoteDataSource: SourceRemoteDataSource
 ) {
 
     val incomingData: PublishSubject<List<Source>> = PublishSubject.create<List<Source>>()

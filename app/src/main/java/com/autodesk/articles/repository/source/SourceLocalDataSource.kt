@@ -1,4 +1,4 @@
-package com.autodesk.articles.repository
+package com.autodesk.articles.repository.source
 
 import com.autodesk.articles.data.Source
 import com.autodesk.articles.data.db.MyRoomDB
