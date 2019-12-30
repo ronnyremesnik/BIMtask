@@ -7,12 +7,15 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.autodesk.articles.app.Constants
 import com.autodesk.articles.data.Article
+import com.autodesk.articles.data.Source
 
-@Database(entities = [Article::class], exportSchema = false, version = 1)
+@Database(entities = [Article::class, Source::class], exportSchema = false, version = 1)
 @TypeConverters(TimeConverters::class)
 abstract class MyRoomDB : RoomDatabase() {
 
     abstract fun getArticleDao(): ArticlesDao
+
+    abstract fun getSourceDao(): SourcesDao
 
     companion object {
 

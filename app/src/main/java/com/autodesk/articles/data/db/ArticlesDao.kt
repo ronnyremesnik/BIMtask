@@ -8,12 +8,12 @@ import io.reactivex.Flowable
 @Dao
 abstract class ArticlesDao {
 
-    @Query("SELECT * FROM articles ORDER BY timeLine DESC LIMIT :limit")
-    protected abstract fun getAllArticles(limit: Int): Flowable<List<Article>>
+    @Query("SELECT * FROM articles WHERE sourceId = :source ORDER BY timeLine DESC LIMIT :limit")
+    protected abstract fun getAllArticles(source: String, limit: Int): Flowable<List<Article>>
 
     // this is to avoid false negatives on db updates
-    fun getAllArticlesDistinct(): Flowable<List<Article>> =
-        getAllArticles(Constants.DATA_PRESENTED_LIMIT).distinctUntilChanged()
+    fun getAllArticlesDistinct(source: String): Flowable<List<Article>> =
+        getAllArticles(source, Constants.DATA_PRESENTED_LIMIT).distinctUntilChanged()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertArticles(list: List<Article>)

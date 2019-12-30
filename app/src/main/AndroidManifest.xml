@@ -11,7 +11,7 @@
             android:name="com.autodesk.articles.app.BIMApplication"
             android:supportsRtl="false"
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.autodesk.articles.main_screen.MainActivity">
+        <activity android:name="com.autodesk.articles.main_screen.SourcesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,6 +20,10 @@
         </activity>
         <activity android:name="com.autodesk.articles.article_screen.ArticleActivity"
                   android:configChanges="orientation|screenSize"/>
+
+        <activity android:name="com.autodesk.articles.main_screen.ArticlesActivity"
+                  android:configChanges="orientation|screenSize"/>
+
     </application>
 
 </manifest>

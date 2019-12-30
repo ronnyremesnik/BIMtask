@@ -1,28 +1,33 @@
 package com.autodesk.articles.repository
 
-import com.autodesk.articles.data.Article
+import com.autodesk.articles.data.Source
+import com.autodesk.articles.data.SourceResponse
+import com.autodesk.articles.ui.BaseRepository
+import io.reactivex.Flowable
+import io.reactivex.Single
 import com.autodesk.articles.util.doWorkOnBackgroundResultsOnMain
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
 
 
-class ArticlesRepository(
-    private val localDataSource: ArticleLocalDataSourceImpl,
-    private val remoteDataSource: ArticleRemoteDataSourceImpl
+
+class SourcesRepository(
+    private val localDataSource: SourceLocalDataSourceImpl,
+    private val remoteDataSource: SourceRemoteDataSourceImpl
 ) {
 
-    val incomingData: PublishSubject<List<Article>> = PublishSubject.create<List<Article>>()
+    val incomingData: PublishSubject<List<Source>> = PublishSubject.create<List<Source>>()
 
     val disposable: CompositeDisposable = CompositeDisposable()
 
     // get data from local db
-    fun getData(source: String) {
+    fun getData() {
         disposable.add(
-            localDataSource.getArticles(source)
+            localDataSource.getSources()
                 .doWorkOnBackgroundResultsOnMain()
                 .doAfterNext {
-                    refreshData(source)
+                    refreshData()
                 }
                 .subscribe({ listArticles ->
                     incomingData.onNext(listArticles)
@@ -33,18 +38,18 @@ class ArticlesRepository(
     }
 
     // get data from remote - api
-    fun refreshData(source: String) {
+    fun refreshData() {
         disposable.add(
-            remoteDataSource.getArticles(source)
+            remoteDataSource.getSources()
                 .doWorkOnBackgroundResultsOnMain()
-                .subscribe({ data -> saveData(data.articles) },
+                .subscribe({ data -> saveData(data.sources) },
                     { error -> handleError(error) })
         )
     }
 
     // save data to db
-    private fun saveData(data: List<Article>) {
-        localDataSource.saveArticles(data)
+    private fun saveData(data: List<Source>) {
+        localDataSource.saveSources(data)
     }
 
     private fun handleError(error: Throwable) {

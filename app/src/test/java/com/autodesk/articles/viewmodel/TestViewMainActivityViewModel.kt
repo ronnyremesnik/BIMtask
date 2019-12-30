@@ -1,12 +1,11 @@
 package com.autodesk.articles.viewmodel
 
 import androidx.lifecycle.Observer
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.autodesk.articles.data.Article
-import com.autodesk.articles.main_screen.MainActivityViewModel
+import com.autodesk.articles.ui.article.ArticlesViewModel
 import com.autodesk.articles.main_screen.MainScreenDataContract
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
@@ -19,13 +18,13 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 class TestViewMainActivityViewModel {
 
-    private lateinit var viewModel: MainActivityViewModel
+    private lateinit var viewModel: ArticlesViewModel
     private var repo : MainScreenDataContract.Repository = mock()
     private var dataChannel : Observer<List<Article>> = mock()
 
     @Before
     fun init() {
-        viewModel = MainActivityViewModel(repo, CompositeDisposable())
+        viewModel = ArticlesViewModel(repo, CompositeDisposable())
         whenever(repo.incomingData).doReturn(PublishSubject.create())
         viewModel.articlesList.observeForever(dataChannel)
     }

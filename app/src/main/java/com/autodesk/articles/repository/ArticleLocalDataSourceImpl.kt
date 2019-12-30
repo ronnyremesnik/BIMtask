@@ -2,18 +2,17 @@ package com.autodesk.articles.repository
 
 import com.autodesk.articles.data.Article
 import com.autodesk.articles.data.db.MyRoomDB
-import com.autodesk.articles.main_screen.MainScreenDataContract
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 
-class LocalDataSource(private val roomDB: MyRoomDB) : MainScreenDataContract.LocalDataSource {
+class ArticleLocalDataSourceImpl(private val roomDB: MyRoomDB) {
 
-    override fun getArticles(): Flowable<List<Article>> {
-        return roomDB.getArticleDao().getAllArticlesDistinct()
+    fun getArticles(source : String): Flowable<List<Article>> {
+        return roomDB.getArticleDao().getAllArticlesDistinct(source)
     }
 
-    override fun saveArticles(data: List<Article>) {
+    fun saveArticles(data: List<Article>) {
         Completable.fromAction {
             roomDB.getArticleDao().insertArticles(data)
         }.subscribeOn(Schedulers.io())

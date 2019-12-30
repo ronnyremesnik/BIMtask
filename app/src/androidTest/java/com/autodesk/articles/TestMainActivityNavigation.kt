@@ -11,8 +11,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
 import com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount
-import com.autodesk.articles.main_screen.MainActivity
-import com.autodesk.articles.main_screen.NewsAdapter
+import com.autodesk.articles.main_screen.SourcesActivity
+import com.autodesk.articles.ui.article.ArticleAdapter
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -26,7 +26,7 @@ class TestMainActivityNavigation {
 
     @Rule
     @JvmField
-    var activityTestRule = ActivityTestRule(MainActivity::class.java)
+    var activityTestRule = ActivityTestRule(SourcesActivity::class.java)
 
     @get:Rule
     var instantTask = InstantTaskExecutorRule()
@@ -50,7 +50,7 @@ class TestMainActivityNavigation {
         // check there are items and able to click one
         onView(ViewMatchers.withId(R.id.news_rv))
             .perform(
-                RecyclerViewActions.actionOnItemAtPosition<NewsAdapter.ArticleViewHolder>
+                RecyclerViewActions.actionOnItemAtPosition<ArticleAdapter.ArticleViewHolder>
                     (3, click())
             )
     }
