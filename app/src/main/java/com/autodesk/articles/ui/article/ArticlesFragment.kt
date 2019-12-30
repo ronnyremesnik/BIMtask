@@ -43,7 +43,7 @@ class ArticlesFragment : BaseFragment<Article>(), ArticleListener {
         ).get(ArticlesViewModel::class.java)
 
 
-        viewModel.articlesList.observe(this, Observer {
+        viewModel.entitiesList.observe(this, Observer {
             it?.let { list ->
                 adapter.submitList(list)
                 if (list.isNotEmpty()) {
@@ -63,7 +63,6 @@ class ArticlesFragment : BaseFragment<Article>(), ArticleListener {
     override fun onResume() {
         super.onResume()
         val source = arguments?.getString(Constants.SOURCE)
-        Timber.d("Ronny $source")
 
         if (source != null) {
             viewModel.getArticlesList(source)

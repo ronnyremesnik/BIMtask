@@ -40,7 +40,7 @@ class SourcesFragment : BaseFragment<Source>(), SourceListener {
         ).get(SourceViewModel::class.java)
 
 
-        viewModel.sourceList.observe(this, Observer {
+        viewModel.entitiesList.observe(this, Observer {
             it?.let { list ->
                 adapter.submitList(list)
                 if (list.isNotEmpty()) {
@@ -56,8 +56,6 @@ class SourcesFragment : BaseFragment<Source>(), SourceListener {
     override fun onResume() {
         super.onResume()
         viewModel.getSourcesList()
-
-
     }
 
     override fun onItemClick(entity: Source) {
