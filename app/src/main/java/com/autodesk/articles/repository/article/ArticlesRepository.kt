@@ -1,25 +1,24 @@
-package com.autodesk.articles.repository
+package com.autodesk.articles.repository.article
 
 import com.autodesk.articles.data.Article
-import com.autodesk.articles.main_screen.MainScreenDataContract
 import com.autodesk.articles.util.doWorkOnBackgroundResultsOnMain
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
 
 class ArticlesRepository(
-    private val localDataSource: MainScreenDataContract.LocalDataSource,
-    private val remoteDataSource: MainScreenDataContract.RemoteDataSource
-) : MainScreenDataContract.Repository {
+    private val articlesLocalDataSource: ArticlesLocalDataSource,
+    private val articlesRemoteDataSource: ArticlesRemoteDataSource
+) {
 
-    override val incomingData: PublishSubject<List<Article>> = PublishSubject.create<List<Article>>()
+    val incomingData: PublishSubject<List<Article>> = PublishSubject.create<List<Article>>()
 
-    override val disposable: CompositeDisposable = CompositeDisposable()
+    val disposable: CompositeDisposable = CompositeDisposable()
 
     // get data from local db
-    override fun getData() {
+    fun getData() {
         disposable.add(
-            localDataSource.getArticles()
+            articlesLocalDataSource.getArticles()
                 .doWorkOnBackgroundResultsOnMain()
                 .doAfterNext {
                     refreshData()
@@ -33,9 +32,9 @@ class ArticlesRepository(
     }
 
     // get data from remote - api
-    override fun refreshData() {
+    fun refreshData() {
         disposable.add(
-            remoteDataSource.getArticles()
+            articlesRemoteDataSource.getArticles()
                 .doWorkOnBackgroundResultsOnMain()
                 .subscribe({ data -> saveData(data.articles) },
                     { error -> handleError(error) })
@@ -43,15 +42,15 @@ class ArticlesRepository(
     }
 
     // save data to db
-    override fun saveData(data: List<Article>) {
-        localDataSource.saveArticles(data)
+    fun saveData(data: List<Article>) {
+        articlesLocalDataSource.saveArticles(data)
     }
 
-    override fun handleError(error: Throwable) {
+    fun handleError(error: Throwable) {
         Timber.e(error)
     }
 
-    override fun onClear() {
+    fun onClear() {
         disposable.clear()
     }
 

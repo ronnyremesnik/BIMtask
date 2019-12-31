@@ -1,4 +1,4 @@
-package com.autodesk.articles.main_screen
+package com.autodesk.articles.ui.articles
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.autodesk.articles.R
 import com.autodesk.articles.app.Constants
 import com.autodesk.articles.app.GlideApp
-import com.autodesk.articles.article_screen.ArticleActivity
+import com.autodesk.articles.ui.article.ArticleActivity
 import com.autodesk.articles.data.Article
 import kotlinx.android.synthetic.main.article_cell.view.*
 import timber.log.Timber
@@ -19,8 +19,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class NewsAdapter :
-    ListAdapter<Article, NewsAdapter.ArticleViewHolder>(object : DiffUtil.ItemCallback<Article>() {
+class ArticlesAdapter :
+    ListAdapter<Article, ArticlesAdapter.ArticleViewHolder>(object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.title == newItem.title
         }

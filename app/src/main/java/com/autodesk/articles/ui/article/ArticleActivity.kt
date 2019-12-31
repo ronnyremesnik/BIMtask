@@ -1,4 +1,4 @@
-package com.autodesk.articles.article_screen
+package com.autodesk.articles.ui.article
 
 import android.annotation.SuppressLint
 import android.os.Bundle

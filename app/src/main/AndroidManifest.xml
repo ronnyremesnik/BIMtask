@@ -11,14 +11,14 @@
             android:name="com.autodesk.articles.app.BIMApplication"
             android:supportsRtl="false"
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.autodesk.articles.main_screen.MainActivity">
+        <activity android:name="com.autodesk.articles.ui.articles.ArticlesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.autodesk.articles.article_screen.ArticleActivity"
+        <activity android:name="com.autodesk.articles.ui.article.ArticleActivity"
                   android:configChanges="orientation|screenSize"/>
     </application>
 

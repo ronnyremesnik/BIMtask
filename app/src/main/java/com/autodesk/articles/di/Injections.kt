@@ -2,12 +2,11 @@ package com.autodesk.articles.di
 
 import com.autodesk.articles.app.BIMApplication
 import com.autodesk.articles.data.db.MyRoomDB
-import com.autodesk.articles.main_screen.MainScreenDataContract
 import com.autodesk.articles.network.APICalls
 import com.autodesk.articles.network.RetrofitClient
-import com.autodesk.articles.repository.ArticlesRepository
-import com.autodesk.articles.repository.LocalDataSource
-import com.autodesk.articles.repository.RemoteDataSource
+import com.autodesk.articles.repository.article.ArticlesRepository
+import com.autodesk.articles.repository.article.ArticlesLocalDataSource
+import com.autodesk.articles.repository.article.ArticlesRemoteDataSource
 import io.reactivex.disposables.CompositeDisposable
 
 
@@ -23,20 +22,23 @@ class Injections {
             return RetrofitClient.newsRetrofit.create(APICalls::class.java)
         }
 
-        private fun injectDatabase() : MyRoomDB {
+        private fun injectDatabase(): MyRoomDB {
             return MyRoomDB.getInstance(BIMApplication.applicationContext())
         }
 
-        private fun injectLocalDataSource() : MainScreenDataContract.LocalDataSource {
-            return LocalDataSource(injectDatabase())
+        private fun injectLocalDataSource(): ArticlesLocalDataSource {
+            return ArticlesLocalDataSource(injectDatabase())
         }
 
-        private fun injectRemoteDataSource() : MainScreenDataContract.RemoteDataSource {
-            return RemoteDataSource(injectAPICalls())
+        private fun injectRemoteDataSource(): ArticlesRemoteDataSource {
+            return ArticlesRemoteDataSource(injectAPICalls())
         }
 
-        fun injectRepository(): MainScreenDataContract.Repository {
-            return ArticlesRepository(injectLocalDataSource(), injectRemoteDataSource())
+        fun injectRepository(): ArticlesRepository {
+            return ArticlesRepository(
+                injectLocalDataSource(),
+                injectRemoteDataSource()
+            )
         }
     }
 }

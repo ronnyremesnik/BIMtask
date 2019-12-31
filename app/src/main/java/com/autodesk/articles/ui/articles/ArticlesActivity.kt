@@ -1,4 +1,4 @@
-package com.autodesk.articles.main_screen
+package com.autodesk.articles.ui.articles
 
 import android.os.Bundle
 import android.view.View.GONE
@@ -13,14 +13,14 @@ import androidx.test.espresso.idling.CountingIdlingResource
 import com.autodesk.articles.R
 import com.autodesk.articles.di.Injections
 
-class MainActivity : AppCompatActivity(), MainScreenDataContract.View {
+class ArticlesActivity : AppCompatActivity() {
 
-    lateinit var viewModel: MainActivityViewModel
+    lateinit var viewModel: ArticlesViewModel
     private lateinit var newsRecyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
 
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-    override val idlingResource = CountingIdlingResource("counting")
+    val idlingResource = CountingIdlingResource("counting")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +28,14 @@ class MainActivity : AppCompatActivity(), MainScreenDataContract.View {
         progressBar = findViewById(R.id.progress_main)
         newsRecyclerView = findViewById(R.id.news_rv)
         newsRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        val adapter = NewsAdapter()
+        val adapter = ArticlesAdapter()
         newsRecyclerView.adapter = adapter
         viewModel = ViewModelProviders.of(
-            this, MainScreenViewModelFactory(
+            this, ArticlesViewModelFactory(
                 Injections.injectRepository(),
                 Injections.injectCompositeDisposable()
             )
-        ).get(MainActivityViewModel::class.java)
+        ).get(ArticlesViewModel::class.java)
         idlingResource.increment()
         viewModel.articlesList.observe(this, Observer {
             it?.let { list ->

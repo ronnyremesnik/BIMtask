@@ -1,15 +1,16 @@
-package com.autodesk.articles.main_screen
+package com.autodesk.articles.ui.articles
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.autodesk.articles.data.Article
+import com.autodesk.articles.repository.article.ArticlesRepository
 import com.autodesk.articles.util.publishSubjectToLiveData
 import io.reactivex.disposables.CompositeDisposable
 
-class MainActivityViewModel(
-    private val repository: MainScreenDataContract.Repository,
+class ArticlesViewModel(
+    private val repository: ArticlesRepository,
     private val disposable: CompositeDisposable
-) : ViewModel(), MainScreenDataContract.ViewModel {
+) : ViewModel() {
 
     val articlesList: LiveData<List<Article>> by lazy {
         repository.incomingData.publishSubjectToLiveData(disposable)
@@ -19,7 +20,7 @@ class MainActivityViewModel(
         repository.refreshData()
     }
 
-    override fun getArticlesList() {
+    fun getArticlesList() {
         if (articlesList.value == null) {
             repository.getData()
         } else {
